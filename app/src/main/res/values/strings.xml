@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Traviews</string>
+    <string name="menu_search">Posts</string>
+    <string name="menu_settings">Perfil</string>
+</resources>
