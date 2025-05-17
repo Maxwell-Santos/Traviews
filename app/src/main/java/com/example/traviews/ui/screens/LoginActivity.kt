@@ -5,11 +5,18 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.traviews.MainActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.traviews.R
+import com.example.traviews.application.MainActivity
+import com.example.traviews.data.local.AuthTokenRepositoryImpl
+import com.example.traviews.model.LoginRequest
+import com.example.traviews.network.TraviewsApi
 import com.example.traviews.ui.screens.feed.FeedActivity
+import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.launch
 
 class LoginActivity: AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -18,15 +25,34 @@ class LoginActivity: AppCompatActivity() {
 
         val tvCadastrar = findViewById<TextView>(R.id.tvCadastrar)
         val tvEntrar = findViewById<TextView>(R.id.btnEntrar)
+        val edtEmail = findViewById<TextInputEditText>(R.id.edtEmail)
+        val edtPassword = findViewById<TextInputEditText>(R.id.edtPassword)
 
         tvCadastrar.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         tvEntrar.setOnClickListener {
-            val intent = Intent(this, FeedActivity::class.java )
-            startActivity(intent)
+            loginUser(edtEmail.text.toString(), edtPassword.text.toString())
         }
     }
+
+    fun loginUser(email: String, password: String) {
+        lifecycleScope.launch {
+            try {
+                val response = TraviewsApi.retrofitService.login(LoginRequest(email, password))
+                AuthTokenRepositoryImpl.save(response.token)
+
+                val intent = Intent(this@LoginActivity, FeedActivity::class.java )
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            } catch (e: Exception) {
+                println("Erro: ${e.message}")
+            }
+        }
+    }
+
 }
