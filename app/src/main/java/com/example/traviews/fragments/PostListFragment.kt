@@ -1,3 +1,6 @@
+package com.example.traviews.fragments
+
+import PostAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traviews.R
 import com.example.traviews.model.Post
-import com.example.traviews.ui.screens.feed.FeedUiState
-import com.example.traviews.ui.screens.feed.FeedViewModel
 import kotlinx.coroutines.launch
 
 class PostListFragment : Fragment() {
@@ -40,7 +41,7 @@ class PostListFragment : Fragment() {
                     }
 
                     is FeedUiState.Success -> {
-                        posts = state.photos
+                        posts = state.posts
 
                         postAdapter = PostAdapter(posts)
                         recyclerView.layoutManager = LinearLayoutManager(requireContext())

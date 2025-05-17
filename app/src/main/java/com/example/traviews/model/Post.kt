@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Post(
-    val id: String? = null,
+    val id: String,
     val userId: String,
     val date: String,
     val likes: Int,

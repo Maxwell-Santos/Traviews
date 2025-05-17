@@ -1,4 +1,4 @@
-package com.example.traviews.domain
+package com.example.traviews.data.local
 
 interface AuthTokenRepository {
     suspend fun save(token: String)

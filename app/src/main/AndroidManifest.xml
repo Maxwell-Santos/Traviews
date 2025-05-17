@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -25,8 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.screens.LoginActivity" />
-        <activity android:name=".ui.screens.feed.FeedActivity" />
+        <activity android:name=".ui.screens.LoginActivity" android:exported="true"/>
+        <activity android:name=".ui.screens.SingUpActivity" android:exported="true"/>
+        <activity android:name=".ui.screens.feed.FeedActivity" android:exported="false"/>
     </application>
 
 </manifest>

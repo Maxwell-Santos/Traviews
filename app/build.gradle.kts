@@ -59,6 +59,12 @@ dependencies {
     // Load Images from URL
     implementation("io.coil-kt:coil:2.5.0")
 
+    // Material 3 of navigation
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

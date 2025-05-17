@@ -1,7 +1,6 @@
 package com.example.traviews.data.local
 
 import android.content.Context
-import com.example.traviews.domain.AuthTokenRepository
 
 object AuthTokenRepositoryImpl : AuthTokenRepository {
 
