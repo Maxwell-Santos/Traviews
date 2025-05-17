@@ -1,11 +1,11 @@
-package com.example.traviews
+package com.example.traviews.ui.screens
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.traviews.ui.screens.LoginActivity
+import com.example.traviews.R
 
 class CadastroActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {

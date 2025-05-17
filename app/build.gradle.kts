@@ -50,6 +50,16 @@ dependencies {
     // Kotlin Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
+    // local-Datastore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // Fragments
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
+    // Load Images from URL
+    implementation("io.coil-kt:coil:2.5.0")
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
