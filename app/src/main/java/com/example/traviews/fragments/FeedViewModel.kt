@@ -1,4 +1,4 @@
-package com.example.traviews.ui.screens.feed
+package com.example.traviews.fragments
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +11,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 sealed interface FeedUiState {
-    data class Success(val photos: List<Post>) : FeedUiState
+    data class Success(val posts: List<Post>) : FeedUiState
     object Error : FeedUiState
     object Loading : FeedUiState
 }

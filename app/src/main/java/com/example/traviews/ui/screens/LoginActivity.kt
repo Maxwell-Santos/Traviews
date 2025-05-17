@@ -11,7 +11,6 @@ import com.example.traviews.application.MainActivity
 import com.example.traviews.data.local.AuthTokenRepositoryImpl
 import com.example.traviews.model.LoginRequest
 import com.example.traviews.network.TraviewsApi
-import com.example.traviews.ui.screens.feed.FeedActivity
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 
@@ -29,9 +28,8 @@ class LoginActivity: AppCompatActivity() {
         val edtPassword = findViewById<TextInputEditText>(R.id.edtPassword)
 
         tvCadastrar.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, SingUpActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         tvEntrar.setOnClickListener {
@@ -45,7 +43,7 @@ class LoginActivity: AppCompatActivity() {
                 val response = TraviewsApi.retrofitService.login(LoginRequest(email, password))
                 AuthTokenRepositoryImpl.save(response.token)
 
-                val intent = Intent(this@LoginActivity, FeedActivity::class.java )
+                val intent = Intent(this@LoginActivity, MainActivity::class.java )
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 finish()
