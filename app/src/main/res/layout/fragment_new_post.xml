@@ -183,8 +183,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:hint="Recreações"
-                app:startIconDrawable="@drawable/thumb_up_24px">
+                android:hint="Outras ativides"
+                app:startIconDrawable="@drawable/sentiment_very_satisfied_24px">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtVisitEntertainmentCost"
