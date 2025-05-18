@@ -108,7 +108,6 @@ class NewPostFragment: Fragment() {
                         binding.btnPublish.text = getString(R.string.new_post_btn_publi_success)
 
                         Toast.makeText(context, "Postagem publicada!", Toast.LENGTH_SHORT).show()
-                        delay(2000)
                         binding.btnPublish.text = getString(R.string.new_post_btn_publi_text)
 
                         findNavController().navigate(R.id.homeFragment)
