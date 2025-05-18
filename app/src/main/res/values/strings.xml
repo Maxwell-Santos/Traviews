@@ -2,4 +2,11 @@
     <string name="app_name">Traviews</string>
     <string name="menu_search">Posts</string>
     <string name="menu_settings">Perfil</string>
+    <string name="new_post_description">Nos conte um pouco sobre como foi sua viagem</string>
+    <string name="new_post_title">Nova postagem</string>
+    <string name="new_post_memories">Lembranças</string>
+    <string name="new_post_costs">Gastos</string>
+    <string name="new_post_btn_publi_text">Publicar</string>
+    <string name="new_post_btn_publi_loading">Publicar</string>
+    <string name="new_post_btn_publi_success">Postagem publicada com sucesso!</string>
 </resources>
