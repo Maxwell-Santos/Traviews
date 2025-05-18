@@ -33,8 +33,8 @@ class PostAdapter(private val posts: List<Post>) : RecyclerView.Adapter<PostAdap
 
         holder.imgViewPost.load(post.medias[0]) {
             crossfade(true)
-            placeholder(R.drawable.google_logo)
-            error(R.drawable.google_logo)
+            placeholder(R.drawable.img_placeholder)
+            error(R.drawable.img_filed_load)
         }
         holder.descriptionTextView.text = post.description
         holder.txtCreatedAt.text = Utils.formatIsoToDate(post.createdAt)
@@ -67,6 +67,6 @@ object Utils {
         }
 
         val BRCurrencyFormat = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
-        return BRCurrencyFormat.format(valor / 100)
+        return BRCurrencyFormat.format(valor)
     }
 }

@@ -4,6 +4,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
+    android:background="@color/white"
     tools:context=".application.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -11,7 +13,9 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="105dp"
+        android:backgroundTint="@color/white"
+        android:background="@color/white"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
@@ -20,10 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:menu="@menu/bottom_navigation_menu"
+        app:backgroundTint="?android:attr/windowBackground"
+        app:elevation="3dp"
         app:labelVisibilityMode="labeled"
-        app:backgroundTint="?android:attr/windowBackground" />
-<!--        app:itemIconTint="#ff0"-->
-<!--        app:itemTextColor="#f00" -->
-<!--        />-->
+        app:menu="@menu/bottom_navigation_menu" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
