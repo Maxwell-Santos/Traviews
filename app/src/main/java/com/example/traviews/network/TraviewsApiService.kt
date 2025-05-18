@@ -5,6 +5,8 @@ import com.example.traviews.model.LoginResponse
 import com.example.traviews.model.PostsResponse
 import com.example.traviews.model.PublishPostRequest
 import com.example.traviews.model.PublishPostResponse
+import com.example.traviews.model.SignUpRequest
+import com.example.traviews.model.SignUpResponse
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -32,6 +34,10 @@ interface TraviewsApiService {
     @POST("auth/login")
     @Headers("No-Auth: true")
     suspend fun login(@Body request: LoginRequest): LoginResponse
+
+    @POST("users")
+    @Headers("No-Auth: true")
+    suspend fun signUp(@Body request: SignUpRequest): SignUpResponse
 
     @POST("posts/publish")
     @Headers("No-Auth: false")

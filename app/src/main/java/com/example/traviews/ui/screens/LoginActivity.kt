@@ -3,6 +3,7 @@ package com.example.traviews.ui.screens
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -33,6 +34,11 @@ class LoginActivity: AppCompatActivity() {
         }
 
         tvEntrar.setOnClickListener {
+            if (edtEmail.text.toString().trim().isEmpty() || edtPassword.text.toString().trim().isEmpty()) {
+                Toast.makeText(applicationContext, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             loginUser(edtEmail.text.toString(), edtPassword.text.toString())
         }
     }

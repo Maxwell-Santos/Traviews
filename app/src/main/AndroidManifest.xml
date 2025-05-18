@@ -31,7 +31,6 @@
         </activity>
         <activity android:name=".ui.screens.LoginActivity" android:exported="true"/>
         <activity android:name=".ui.screens.SingUpActivity" android:exported="true"/>
-        <activity android:name=".ui.screens.feed.FeedActivity" android:exported="false"/>
     </application>
 
 </manifest>

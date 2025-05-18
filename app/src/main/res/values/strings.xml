@@ -9,4 +9,8 @@
     <string name="new_post_btn_publi_text">Publicar</string>
     <string name="new_post_btn_publi_loading">Publicar</string>
     <string name="new_post_btn_publi_success">Postagem publicada com sucesso!</string>
+    <string name="sign_up_title">Cadastre-se</string>
+    <string name="sign_up_btn_text">Cadastrar</string>
+    <string name="sign_up_login_description">Já possui conta?</string>
+    <string name="sign_up_text_login">Entrar</string>
 </resources>
