@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         runBlocking {
             val isLoggedIn = AuthTokenRepositoryImpl.get() ?: ""
+            println("[TOKEN] ${isLoggedIn}")
             if (isLoggedIn.isEmpty()) {
                 redirectToLogin()
                 return@runBlocking
@@ -46,8 +49,8 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.homeFragment)
                     true
                 }
-                R.id.profileFragment -> {
-                    navController.navigate(R.id.profileFragment)
+                R.id.newPostFragment -> {
+                    navController.navigate(R.id.newPostFragment)
                     true
                 }
                 R.id.settingsFragment -> {
@@ -58,11 +61,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
     }
 
     private fun redirectToLogin () {

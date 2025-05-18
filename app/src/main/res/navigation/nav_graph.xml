@@ -11,6 +11,13 @@
         android:label="Feed"
         tools:layout="@layout/fragment_feed"
         />
+
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="com.example.traviews.fragments.NewPostFragment"
+        tools:layout="@layout/fragment_new_post"
+        android:label="Novo Post" />
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.traviews.fragments.PostListFragment"

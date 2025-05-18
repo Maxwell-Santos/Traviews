@@ -34,6 +34,7 @@ class FeedViewModel : ViewModel() {
             } catch (e: IOException) {
                 FeedUiState.Error
             } catch (e: HttpException) {
+                println(e.message())
                 FeedUiState.Error
             }
         }
