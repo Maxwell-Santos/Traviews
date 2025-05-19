@@ -19,14 +19,9 @@
         android:label="Novo Post" />
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.traviews.fragments.PostListFragment"
-        tools:layout="@layout/fragment_feed"
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.traviews.fragments.UserProfileFragment"
+        tools:layout="@layout/fragment_user_profile"
         android:label="Perfil" />
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.example.traviews.fragments.PostListFragment"
-        tools:layout="@layout/fragment_feed"
-        android:label="Configurações" />
 </navigation>
 

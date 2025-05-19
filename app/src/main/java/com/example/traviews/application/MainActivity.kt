@@ -53,8 +53,8 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.newPostFragment)
                     true
                 }
-                R.id.settingsFragment -> {
-                    navController.navigate(R.id.settingsFragment)
+                R.id.userProfileFragment -> {
+                    navController.navigate(R.id.userProfileFragment)
                     true
                 }
                 else -> false
