@@ -8,7 +8,7 @@
         android:icon="@drawable/add_box_24px"
         android:title="Novo" />
     <item
-        android:id="@+id/settingsFragment"
-        android:icon="@drawable/search_24px"
-        android:title="Config" />
+        android:id="@+id/userProfileFragment"
+        android:icon="@drawable/person_24px"
+        android:title="Perfil" />
 </menu>

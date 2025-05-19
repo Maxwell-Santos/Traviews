@@ -49,7 +49,7 @@ class PostListFragment : Fragment() {
                     }
 
                     is FeedUiState.Error -> {
-                        println("Falha ao carregar o cep")
+                        println("Falha ao carregar os posts")
                     }
                 }
             }

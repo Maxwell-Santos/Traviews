@@ -13,4 +13,6 @@
     <string name="sign_up_btn_text">Cadastrar</string>
     <string name="sign_up_login_description">Já possui conta?</string>
     <string name="sign_up_text_login">Entrar</string>
+    <string name="user_profile_title">Minha conta</string>
+    <string name="user_proile_logout">Sair</string>
 </resources>
