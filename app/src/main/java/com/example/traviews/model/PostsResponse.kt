@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 data class PostsResponse(
     val data: List<Post>,
     val cursor: String?,
-    var hasMore: Boolean
+    val hasMore: Boolean
 )

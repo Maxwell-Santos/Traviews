@@ -18,7 +18,8 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
-private const val BASE_URL = "http://192.168.15.2:3000/api/v1/"
+ private const val BASE_URL = "http://192.168.15.6:3000/api/v1/"
+//private const val BASE_URL = "https://traviews-api.vercel.app/api/v1/"
 
 val client = OkHttpClient.Builder()
     .addInterceptor(AuthInterceptor())

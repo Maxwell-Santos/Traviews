@@ -21,6 +21,7 @@ class PostAdapter(private val posts: List<Post>) : RecyclerView.Adapter<PostAdap
         val txtEntertainmentCost: TextView = itemView.findViewById(R.id.txtEntertainmentCost)
         val txtAccommodationCost: TextView = itemView.findViewById(R.id.txtAccomodationCost)
         val imgViewPost: ImageView = itemView.findViewById(R.id.imgViewPost)
+        val txtUsername: TextView = itemView.findViewById(R.id.txtUsername)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -41,6 +42,7 @@ class PostAdapter(private val posts: List<Post>) : RecyclerView.Adapter<PostAdap
         holder.txtFoodCost.text = Utils.formatToBRL(post.foodCost)
         holder.txtEntertainmentCost.text = Utils.formatToBRL(post.entertainmentCost)
         holder.txtAccommodationCost.text = Utils.formatToBRL(post.accommodationCost)
+        holder.txtUsername.text = post.user.name
     }
     override fun getItemCount(): Int = posts.size
 }
@@ -54,7 +56,7 @@ object Utils {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
         inputFormat.timeZone = TimeZone.getTimeZone("UTC")
 
-        val outputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("d 'de' MMMM, yyyy", Locale("pt", "BR"))
         outputFormat.timeZone = TimeZone.getTimeZone("America/Sao_Paulo")
 
         val date = inputFormat.parse(cleanedDate)
