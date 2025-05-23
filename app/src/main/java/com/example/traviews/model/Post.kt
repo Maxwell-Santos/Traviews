@@ -11,7 +11,7 @@ data class Post(
     val id: String,
     val userId: String,
     val date: String,
-    val likes: Int,
+    val likes: List<String>,
     val medias: List<String>,
     val description: String,
     val foodCost: Int?,

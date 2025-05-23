@@ -1,18 +1,27 @@
+package com.example.traviews.adapter
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.traviews.R
+import com.example.traviews.data.local.AuthTokenRepositoryImpl
 import com.example.traviews.model.Post
+import com.example.traviews.network.TraviewsApi
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
 
-class PostAdapter(private val posts: List<Post>) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+
+class PostAdapter(private val posts: List<Post>, private val lifecycleScope: LifecycleCoroutineScope ) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+    val alreadyLiked: MutableList<String> = mutableListOf()
 
     class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val descriptionTextView: TextView = itemView.findViewById(R.id.textDescription)
@@ -22,6 +31,8 @@ class PostAdapter(private val posts: List<Post>) : RecyclerView.Adapter<PostAdap
         val txtAccommodationCost: TextView = itemView.findViewById(R.id.txtAccomodationCost)
         val imgViewPost: ImageView = itemView.findViewById(R.id.imgViewPost)
         val txtUsername: TextView = itemView.findViewById(R.id.txtUsername)
+        val btnLike: ImageView = itemView.findViewById(R.id.btnLike)
+        val likeCount: TextView = itemView.findViewById(R.id.tvLikeCount)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -43,6 +54,39 @@ class PostAdapter(private val posts: List<Post>) : RecyclerView.Adapter<PostAdap
         holder.txtEntertainmentCost.text = Utils.formatToBRL(post.entertainmentCost)
         holder.txtAccommodationCost.text = Utils.formatToBRL(post.accommodationCost)
         holder.txtUsername.text = post.user.name
+        holder.likeCount.text = post.likes.size.toString()
+
+        lifecycleScope.launch {
+            val id = AuthTokenRepositoryImpl.getUserId()
+            if (post.likes.contains(id)) {
+                holder.btnLike.setImageResource(R.drawable.favorited_24px)
+                alreadyLiked.add(post.id)
+            }
+        }
+
+        holder.btnLike.setOnClickListener {
+            lifecycleScope.launch {
+                try {
+                    TraviewsApi.retrofitService.likePost(post.id)
+
+                    val a = alreadyLiked.find { post.id == it }
+                    if (!a.isNullOrEmpty()) {
+                        alreadyLiked.remove(post.id)
+                        holder.btnLike.setImageResource(R.drawable.favorite_24px)
+                        val newLikeCount = (holder.likeCount.text.toString().toInt() - 1).toString()
+                        holder.likeCount.text = newLikeCount
+                    } else {
+                        alreadyLiked.add(post.id)
+                        holder.btnLike.setImageResource(R.drawable.favorited_24px)
+                        val newLikeCount = (holder.likeCount.text.toString().toInt() + 1).toString()
+                        holder.likeCount.text = newLikeCount
+                    }
+                } catch (e: Exception) {
+                    Toast.makeText(holder.itemView.context, "Erro ao curtir o post", Toast.LENGTH_SHORT).show()
+                    println("Erro: ${e.message}")
+                }
+            }
+        }
     }
     override fun getItemCount(): Int = posts.size
 }

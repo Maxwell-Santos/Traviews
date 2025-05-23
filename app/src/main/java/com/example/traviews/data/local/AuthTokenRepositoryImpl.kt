@@ -1,6 +1,23 @@
 package com.example.traviews.data.local
 
 import android.content.Context
+import android.util.Base64
+import org.json.JSONObject
+
+fun decodeJwt(jwt: String): JSONObject? {
+    return try {
+        val parts = jwt.split(".")
+        if (parts.size != 3) return null
+
+        val payload = parts[1]
+        val decodedBytes = Base64.decode(payload, Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP)
+        val decodedString = String(decodedBytes, Charsets.UTF_8)
+        JSONObject(decodedString)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
+    }
+}
 
 object AuthTokenRepositoryImpl : AuthTokenRepository {
 
@@ -23,6 +40,21 @@ object AuthTokenRepositoryImpl : AuthTokenRepository {
 
     override suspend fun get(): String? {
         return getDataSource().getToken()
+    }
+
+    suspend fun getUserId(): String {
+        val token = getDataSource().getToken() ?: ""
+        var userId = ""
+
+        if (!token.isEmpty()) {
+            val payload = decodeJwt(token)
+
+            payload?.let {
+                userId = it.getString("sub")
+            }
+        }
+
+        return userId
     }
 
     override suspend fun clear() {
