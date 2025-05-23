@@ -1,5 +1,6 @@
 package com.example.traviews.network
 
+import com.example.traviews.model.LikePostResponse
 import com.example.traviews.model.LoginRequest
 import com.example.traviews.model.LoginResponse
 import com.example.traviews.model.PostsResponse
@@ -17,9 +18,11 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.Path
 
- private const val BASE_URL = "http://192.168.15.6:3000/api/v1/"
-//private const val BASE_URL = "https://traviews-api.vercel.app/api/v1/"
+//private const val BASE_URL = "http://192.168.15.6:3000/api/v1/"
+//private const val BASE_URL = "http://192.168.15.5:3000/api/v1/"
+private const val BASE_URL = "https://traviews-api.vercel.app/api/v1/"
 
 val client = OkHttpClient.Builder()
     .addInterceptor(AuthInterceptor())
@@ -45,13 +48,17 @@ interface TraviewsApiService {
     @Headers("No-Auth: false")
     suspend fun getUserProfile(): UserProfileResponse
 
+    @GET("posts")
+    @Headers("No-Auth: false")
+    suspend fun getPosts(): PostsResponse
+
     @POST("posts/publish")
     @Headers("No-Auth: false")
     suspend fun publishPost(@Body request: PublishPostRequest): PublishPostResponse
 
-    @GET("posts")
+    @POST("posts/like/{postId}")
     @Headers("No-Auth: false")
-    suspend fun getPosts(): PostsResponse
+    suspend fun likePost(@Path("postId") postId: String): LikePostResponse
 }
 
 object TraviewsApi {

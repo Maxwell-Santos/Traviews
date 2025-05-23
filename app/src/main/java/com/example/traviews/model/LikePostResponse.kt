@@ -1,8 +1,6 @@
 package com.example.traviews.model
+
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class LoginResponse(
-    val token: String,
-    val id: String
-)
+data class LikePostResponse (val id: String)
